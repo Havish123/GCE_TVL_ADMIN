@@ -3,6 +3,7 @@ package com.havish.gce_tvl_admin
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.cardview.widget.CardView
@@ -14,6 +15,16 @@ class MainActivity : AppCompatActivity(),View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val uploadNotice=findViewById<CardView>(R.id.addNotice)
+
+        var btn:CardView=findViewById(R.id.addFaculty)
+
+        btn.setOnClickListener(object :View.OnClickListener{
+            override fun onClick(v: View?) {
+                print("Welcome")
+                Log.d("Welcome","Welcome")
+                Toast.makeText(this@MainActivity, "HI", Toast.LENGTH_SHORT).show()
+            }
+        })
         uploadNotice.setOnClickListener(this)
 
     }
