@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "671329752547",
+    "project_id": "gcetvl-75110",
+    "storage_bucket": "gcetvl-75110.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:671329752547:android:ac90874c06be9df885bcd6",
+        "android_client_info": {
+          "package_name": "com.havish.gce_tvl_admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "671329752547-b6kpglsff3dv6rcuoi10ne4mcvrirer5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.havish.gce_tvl_admin",
+            "certificate_hash": "c932afa7a63a94de3fb2dcd1b4dd08ce12ca9c44"
+          }
+        },
+        {
+          "client_id": "671329752547-anr5vs5as7ftavipc2bqsvr01vugk2pp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQtth51_h635c-fuWf0LhmwdoNfuYXWWY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "671329752547-anr5vs5as7ftavipc2bqsvr01vugk2pp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

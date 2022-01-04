@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GCE_TVL_ADMIN">
         <activity
+            android:name=".UploadNotice"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

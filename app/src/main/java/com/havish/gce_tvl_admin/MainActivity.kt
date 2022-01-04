@@ -1,11 +1,34 @@
 package com.havish.gce_tvl_admin
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.Toast
+import androidx.cardview.widget.CardView
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(),View.OnClickListener {
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val uploadNotice=findViewById<CardView>(R.id.addNotice)
+        uploadNotice.setOnClickListener(this)
+
+    }
+
+    override fun onClick(v: View?) {
+        when(v!!.id){
+            R.id.addNotice->{
+                Toast.makeText(this,"Welcome",Toast.LENGTH_SHORT).show()
+                val intent= Intent(this@MainActivity,UploadNotice::class.java)
+                startActivity(intent)
+                finish()
+            }
+            R.id.addFaculty->{
+                Toast.makeText(this,"Welcome",Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 }
