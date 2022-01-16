@@ -37,7 +37,7 @@ class UploadNotice : AppCompatActivity() {
 
     private val REQ:Int=1
     private lateinit var cardView: CardView
-    private lateinit var bitmap:Bitmap
+    private var bitmap:Bitmap ?=null
     private lateinit var noticeImageView:ImageView
     private lateinit var upldBtn:Button
     private lateinit var noticeText:EditText
@@ -84,7 +84,7 @@ class UploadNotice : AppCompatActivity() {
         progressDialog.setMessage("Uploading.....")
         progressDialog.show();
         var baos:ByteArrayOutputStream=ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 50, baos);
+        bitmap?.compress(Bitmap.CompressFormat.JPEG, 50, baos);
 
         var finalImg:ByteArray=baos!!.toByteArray();
         val filepath:StorageReference=storageReference.child("Notice").child(finalImg.toString()+"jpg")

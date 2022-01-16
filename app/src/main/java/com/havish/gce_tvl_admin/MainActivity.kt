@@ -15,17 +15,19 @@ class MainActivity : AppCompatActivity(),View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val uploadNotice=findViewById<CardView>(R.id.addNotice)
+        var uploadFaculty:CardView=findViewById(R.id.addFaculty)
+        var uploadGallery=findViewById(R.id.addGallary) as CardView
 
-        var btn:CardView=findViewById(R.id.addFaculty)
-
-        btn.setOnClickListener(object :View.OnClickListener{
-            override fun onClick(v: View?) {
-                print("Welcome")
-                Log.d("Welcome","Welcome")
-                Toast.makeText(this@MainActivity, "HI", Toast.LENGTH_SHORT).show()
-            }
-        })
+//        btn.setOnClickListener(object :View.OnClickListener{
+//            override fun onClick(v: View?) {
+//                print("Welcome")
+//                Log.d("Welcome","Welcome")
+//                Toast.makeText(this@MainActivity, "HI", Toast.LENGTH_SHORT).show()
+//            }
+//        })
         uploadNotice.setOnClickListener(this)
+        uploadFaculty.setOnClickListener(this)
+        uploadGallery.setOnClickListener(this)
 
     }
 
@@ -33,7 +35,13 @@ class MainActivity : AppCompatActivity(),View.OnClickListener {
         when(v!!.id){
             R.id.addNotice->{
                 Toast.makeText(this,"Welcome",Toast.LENGTH_SHORT).show()
-                val intent= Intent(this@MainActivity,UploadNotice::class.java)
+                var intent= Intent(this@MainActivity,UploadNotice::class.java)
+                startActivity(intent)
+                finish()
+            }
+            R.id.addGallary->{
+                Toast.makeText(this,"Welcome Image",Toast.LENGTH_SHORT).show()
+                var intent= Intent(this@MainActivity,UploadImage::class.java)
                 startActivity(intent)
                 finish()
             }
