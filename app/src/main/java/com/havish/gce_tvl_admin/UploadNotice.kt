@@ -34,9 +34,7 @@ import java.util.*
 
 
 class UploadNotice : AppCompatActivity() {
-
-    private val REQ:Int=1
-    private lateinit var cardView: CardView
+    private lateinit var addImage: CardView
     private var bitmap:Bitmap ?=null
     private lateinit var noticeImageView:ImageView
     private lateinit var upldBtn:Button
@@ -54,13 +52,13 @@ class UploadNotice : AppCompatActivity() {
         storageReference=FirebaseStorage.getInstance().reference
         progressDialog= ProgressDialog(this)
 
-        cardView=findViewById(R.id.addImage)
+        addImage=findViewById(R.id.addImage)
         noticeImageView=findViewById(R.id.imagenotice)
         noticeText=findViewById(R.id.noticeTitle)
         upldBtn=findViewById(R.id.uploadNoticeBtn)
 
 
-        cardView.setOnClickListener(object:View.OnClickListener {
+        addImage.setOnClickListener(object:View.OnClickListener {
             override fun onClick(v: View?) {
                 openGallery();
             }

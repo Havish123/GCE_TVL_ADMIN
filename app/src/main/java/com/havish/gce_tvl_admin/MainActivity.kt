@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity(),View.OnClickListener {
         val uploadNotice=findViewById<CardView>(R.id.addNotice)
         var uploadFaculty:CardView=findViewById(R.id.addFaculty)
         var uploadGallery=findViewById(R.id.addGallary) as CardView
+        var uploadEbook=findViewById(R.id.addPdf) as CardView
 
 //        btn.setOnClickListener(object :View.OnClickListener{
 //            override fun onClick(v: View?) {
@@ -28,6 +29,7 @@ class MainActivity : AppCompatActivity(),View.OnClickListener {
         uploadNotice.setOnClickListener(this)
         uploadFaculty.setOnClickListener(this)
         uploadGallery.setOnClickListener(this)
+        uploadEbook.setOnClickListener(this)
 
     }
 
@@ -42,6 +44,12 @@ class MainActivity : AppCompatActivity(),View.OnClickListener {
             R.id.addGallary->{
                 Toast.makeText(this,"Welcome Image",Toast.LENGTH_SHORT).show()
                 var intent= Intent(this@MainActivity,UploadImage::class.java)
+                startActivity(intent)
+                finish()
+            }
+            R.id.addPdf->{
+                Toast.makeText(this,"Welcome Image",Toast.LENGTH_SHORT).show()
+                var intent= Intent(this@MainActivity,UploadPdf::class.java)
                 startActivity(intent)
                 finish()
             }
