@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.cardview.widget.CardView
+import com.havish.gce_tvl_admin.Faculty.UpdateFaculty
 
 class MainActivity : AppCompatActivity(),View.OnClickListener {
 
@@ -54,6 +55,8 @@ class MainActivity : AppCompatActivity(),View.OnClickListener {
                 finish()
             }
             R.id.addFaculty->{
+                var intent=Intent(this@MainActivity,UpdateFaculty::class.java)
+                startActivity(intent)
                 Toast.makeText(this,"Welcome",Toast.LENGTH_SHORT).show()
             }
         }
