@@ -119,7 +119,7 @@ class AddStaff : AppCompatActivity() {
         }else{
             progressDialog.setMessage("Uploading.....")
             progressDialog.show();
-            insertImage();
+            insertImage()
         }
     }
 

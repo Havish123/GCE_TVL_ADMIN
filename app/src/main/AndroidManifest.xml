@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GCE_TVL_ADMIN">
         <activity
+            android:name=".Faculty.UpdateStaffActivity"
+            android:exported="false" />
+        <activity
             android:name=".Faculty.AddStaff"
             android:exported="false" />
         <activity
