@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GCE_TVL_ADMIN">
         <activity
+            android:name=".notice.DeleteNoticeActivity"
+            android:exported="false" />
+        <activity
             android:name=".Faculty.UpdateStaffActivity"
             android:exported="false" />
         <activity
@@ -28,7 +31,7 @@
             android:name=".UploadImage"
             android:exported="false" />
         <activity
-            android:name=".UploadNotice"
+            android:name=".notice.UploadNotice"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

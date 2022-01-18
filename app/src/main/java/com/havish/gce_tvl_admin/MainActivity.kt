@@ -3,11 +3,12 @@ package com.havish.gce_tvl_admin
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.cardview.widget.CardView
 import com.havish.gce_tvl_admin.Faculty.UpdateFaculty
+import com.havish.gce_tvl_admin.notice.DeleteNoticeActivity
+import com.havish.gce_tvl_admin.notice.UploadNotice
 
 class MainActivity : AppCompatActivity(),View.OnClickListener {
 
@@ -19,6 +20,7 @@ class MainActivity : AppCompatActivity(),View.OnClickListener {
         var uploadFaculty:CardView=findViewById(R.id.addFaculty)
         var uploadGallery=findViewById(R.id.addGallary) as CardView
         var uploadEbook=findViewById(R.id.addPdf) as CardView
+        var deleteNotice=findViewById(R.id.deleteNotice) as CardView
 
 //        btn.setOnClickListener(object :View.OnClickListener{
 //            override fun onClick(v: View?) {
@@ -31,25 +33,23 @@ class MainActivity : AppCompatActivity(),View.OnClickListener {
         uploadFaculty.setOnClickListener(this)
         uploadGallery.setOnClickListener(this)
         uploadEbook.setOnClickListener(this)
+        deleteNotice.setOnClickListener(this)
 
     }
 
     override fun onClick(v: View?) {
         when(v!!.id){
             R.id.addNotice->{
-                Toast.makeText(this,"Welcome",Toast.LENGTH_SHORT).show()
-                var intent= Intent(this@MainActivity,UploadNotice::class.java)
+                var intent= Intent(this@MainActivity, UploadNotice::class.java)
                 startActivity(intent)
                 finish()
             }
             R.id.addGallary->{
-                Toast.makeText(this,"Welcome Image",Toast.LENGTH_SHORT).show()
                 var intent= Intent(this@MainActivity,UploadImage::class.java)
                 startActivity(intent)
                 finish()
             }
             R.id.addPdf->{
-                Toast.makeText(this,"Welcome Image",Toast.LENGTH_SHORT).show()
                 var intent= Intent(this@MainActivity,UploadPdf::class.java)
                 startActivity(intent)
                 finish()
@@ -57,7 +57,11 @@ class MainActivity : AppCompatActivity(),View.OnClickListener {
             R.id.addFaculty->{
                 var intent=Intent(this@MainActivity,UpdateFaculty::class.java)
                 startActivity(intent)
-                Toast.makeText(this,"Welcome",Toast.LENGTH_SHORT).show()
+            }
+            R.id.deleteNotice->{
+                var intent=Intent(this@MainActivity,DeleteNoticeActivity::class.java)
+                startActivity(intent)
+
             }
         }
     }

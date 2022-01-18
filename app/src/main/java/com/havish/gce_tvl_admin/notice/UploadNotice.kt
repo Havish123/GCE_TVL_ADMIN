@@ -1,24 +1,21 @@
-package com.havish.gce_tvl_admin
+package com.havish.gce_tvl_admin.notice
 
 import android.app.Activity
 import android.app.ProgressDialog
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.ImageDecoder
-import android.media.MediaPlayer
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
 import androidx.cardview.widget.CardView
-import java.net.URI
 import android.os.Build
 import android.util.Log
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
 import com.google.android.gms.tasks.OnCompleteListener
-import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.gms.tasks.Task
 import com.google.firebase.database.DatabaseReference
@@ -26,9 +23,9 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.UploadTask
+import com.havish.gce_tvl_admin.R
 import java.io.ByteArrayOutputStream
 import java.io.IOException
-import java.lang.Exception
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -126,7 +123,7 @@ class UploadNotice : AppCompatActivity() {
         var currentTime:SimpleDateFormat= SimpleDateFormat("hh:mm a")
         var time:String=currentTime.format(calTime.time)
 
-        var notice:NoticeData= NoticeData(title,downloadUrl,date,time,uniqueKey)
+        var notice: NoticeData = NoticeData(title,downloadUrl,date,time,uniqueKey)
 
         reference.child(uniqueKey).setValue(notice).addOnSuccessListener(object:OnSuccessListener<Void>{
             override fun onSuccess(p0: Void?) {

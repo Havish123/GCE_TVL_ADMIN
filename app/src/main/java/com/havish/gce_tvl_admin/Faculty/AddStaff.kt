@@ -22,11 +22,9 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.UploadTask
-import com.havish.gce_tvl_admin.NoticeData
 import com.havish.gce_tvl_admin.R
 import java.io.ByteArrayOutputStream
 import java.io.IOException
-import java.text.SimpleDateFormat
 import java.util.*
 
 class AddStaff : AppCompatActivity() {
