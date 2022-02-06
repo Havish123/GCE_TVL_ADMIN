@@ -4,6 +4,7 @@ package com.havish.gce_tvl_admin.notice
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.DialogInterface
+import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.havish.gce_tvl_admin.R
@@ -39,10 +41,12 @@ class NoticeAdapter() : RecyclerView.Adapter<NoticeAdapter.NoticeViewAdapter>() 
     override fun onBindViewHolder(holder: NoticeViewAdapter, @SuppressLint("RecyclerView") position: Int) {
         var item:NoticeData=noticeList.get(position)
         holder.deleteNoticeTitle.text=item.title
-
+        var display: DisplayMetrics =context.resources.displayMetrics
+        var width:Int=display.widthPixels
         try {
             if(item.image!=null)
-                Picasso.get().load(item.image).into(holder.deleteNoticeImage)
+                Glide.with(context).load(item.image).override(width,width).optionalCenterCrop().into(holder.deleteNoticeImage)
+                //Picasso.get().load(item.image).into(holder.deleteNoticeImage)
         } catch (e: Exception) {
             e.printStackTrace()
         }

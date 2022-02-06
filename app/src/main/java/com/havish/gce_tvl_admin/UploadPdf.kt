@@ -34,11 +34,15 @@ class UploadPdf : AppCompatActivity() {
     private lateinit var addPdfBtn: Button
     private lateinit var pdfTitle: EditText
     private lateinit var pdfText:TextView
+    private lateinit var pdfCategory: Spinner
+
     private lateinit var databasereference: DatabaseReference
     private lateinit var storageReference: StorageReference
+
+
     private var pdfName:String=""
     private var title:String=""
-//    lateinit var  data:MutableMap<String,String>
+    private var category:String="";
     private lateinit var progressDialog: ProgressDialog;
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,6 +57,26 @@ class UploadPdf : AppCompatActivity() {
         pdfTitle=findViewById(R.id.pdfTitle)
         addPdfBtn=findViewById(R.id.uploadPdfBtn)
         pdfText=findViewById(R.id.pdfTextView)
+        pdfCategory=findViewById(R.id.pdfCategory)
+
+        var list= arrayListOf<String>("Select Category","CSE","MECH","CIVIL","ECE","EEE")
+        pdfCategory.adapter=
+            ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,list)
+
+        pdfCategory.onItemSelectedListener=object : AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                category=pdfCategory.selectedItem.toString()
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+        }
 
 
 
@@ -67,7 +91,10 @@ class UploadPdf : AppCompatActivity() {
             if(title.isEmpty()){
                 pdfTitle.setError("Empty")
                 pdfTitle.requestFocus()
-            }else if(pdfData==null){
+            }else if(category.equals("Select Category")){
+                Toast.makeText(this@UploadPdf,"Please select Staff Category",Toast.LENGTH_LONG).show()
+            }
+            else if(pdfData==null){
                 Toast.makeText(this@UploadPdf, "Please Upload Pdf", Toast.LENGTH_SHORT)
                     .show()
             }else{
@@ -80,7 +107,7 @@ class UploadPdf : AppCompatActivity() {
     private fun uploadPdf() {
         progressDialog.setMessage("Uploading.....")
         progressDialog.show();
-        var reference:StorageReference=storageReference.child("pdf/"+pdfName+"-"+System.currentTimeMillis()+".pdf")
+        var reference:StorageReference=storageReference.child("pdf").child(category).child(pdfName+"-"+System.currentTimeMillis()+".pdf")
         reference.putFile(pdfData!!).addOnSuccessListener {
             var uriTask:Task<Uri> = it.storage.downloadUrl
             while (!uriTask.isComplete);
@@ -94,17 +121,19 @@ class UploadPdf : AppCompatActivity() {
     }
 
     private fun uploadData(downloadUrl: String) {
-        var key:String=databasereference.child("pdf").push().key.toString()
+        var key:String=databasereference.child("pdf").child(category).push().key.toString()
 
         data class pdfDataClass(var pdfTitle:String,var url:String)
 
         var data=pdfDataClass(title,downloadUrl)
 
-        databasereference.child("pdf").child(key).setValue(data).addOnCompleteListener{
+        databasereference.child("pdf").child(category).child(key).setValue(data).addOnCompleteListener{
             Toast.makeText(this@UploadPdf, "PDF upload Successfully", Toast.LENGTH_SHORT)
                 .show()
             title=""
             pdfTitle.setText("")
+            pdfText.setText("No File Selected")
+            pdfCategory.setSelection(0);
             progressDialog.dismiss()
         }.addOnFailureListener{
             Toast.makeText(this@UploadPdf, "Failed to Upload PDF", Toast.LENGTH_SHORT)
