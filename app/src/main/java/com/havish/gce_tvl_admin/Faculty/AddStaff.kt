@@ -94,7 +94,7 @@ class AddStaff : AppCompatActivity() {
             checkValidation()
         }
     }
-
+    //Hello
     private fun checkValidation() {
         name=staffName.text.toString()
         email=staffEmail.text.toString()
